@@ -1,6 +1,6 @@
 import argparse
 import json
-import os.path
+import re
 import sys
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
@@ -10,7 +10,7 @@ output_file = "output.json"
 input_string = ""
 
 # The list of punctuation marks that end a sentence
-punctuations = ['.', '?', '!']
+punctuations = [".", "?", "!"]
 
 # The list of sentences to analyze
 sentences = []
@@ -41,21 +41,13 @@ def validate_arguments():
 
 
 def get_sentences(text):
-    """
-    Get the list of sentences from the input string
-    :param text: The input string to analyze
-    :return: The list of sentences
-    """
-    these_sentences = []
-    this_sentence = ''
-    for char in text:
-        this_sentence += char
-        if char in ['.', '?', '!']:
-            these_sentences.append(this_sentence.strip())
-            this_sentence = ''
-    if this_sentence:
-        these_sentences.append(this_sentence.strip())
-    return sentences
+    pattern = '[' + ''.join(re.escape(p) for p in punctuations) + ']'
+
+    # Split the text using the regex pattern
+    split_text = re.split(pattern, text)
+
+    # Filter out empty strings and strip whitespace
+    return [line.strip() for line in split_text if line]
 
 
 def analyze_sentence(this_sentence):
@@ -84,8 +76,6 @@ if __name__ == '__main__':
 
     if input_string is None:
         input_string = sys.stdin.read().strip()
-    else:
-        print("Input string: " + input_string)
 
     # Split up the input string into sentences
     sentences = get_sentences(input_string)
@@ -103,5 +93,8 @@ if __name__ == '__main__':
         print("No sentences were analyzed")
         exit(1)
 
-    outfile = open(output_file, "w")
-    outfile.write(json.dumps(analyzed_sentences))
+    if output_file is None:
+        print(json.dumps(analyzed_sentences))
+    else:
+        outfile = open(output_file, "w")
+        outfile.write(json.dumps(analyzed_sentences))
