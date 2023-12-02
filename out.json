@@ -1,0 +1,56 @@
+[
+  {
+    "sentence": "Paragraph 1 (Positive Sentiment): This weekend was absolutely marvelous! I attended a family reunion which was filled with laughter, heartwarming conversations, and nostalgic memories",
+    "vader_emotion_scores": {
+      "neg": 0.0,
+      "neu": 0.582,
+      "pos": 0.418,
+      "compound": 0.937
+    }
+  },
+  {
+    "sentence": " The weather was splendid, adding a cheerful ambiance to our gathering",
+    "vader_emotion_scores": {
+      "neg": 0.0,
+      "neu": 0.552,
+      "pos": 0.448,
+      "compound": 0.8074
+    }
+  },
+  {
+    "sentence": " Children were playing joyfully while the elders shared fascinating stories from the past",
+    "vader_emotion_scores": {
+      "neg": 0.0,
+      "neu": 0.446,
+      "pos": 0.554,
+      "compound": 0.8807
+    }
+  },
+  {
+    "sentence": " The sumptuous feast prepared was a delightful treat for everyone",
+    "vader_emotion_scores": {
+      "neg": 0.0,
+      "neu": 0.455,
+      "pos": 0.545,
+      "compound": 0.8126
+    }
+  },
+  {
+    "sentence": " Such occasions truly strengthen family bonds and leave us with unforgettable memories",
+    "vader_emotion_scores": {
+      "neg": 0.078,
+      "neu": 0.584,
+      "pos": 0.338,
+      "compound": 0.6124
+    }
+  },
+  {
+    "sentence": "",
+    "vader_emotion_scores": {
+      "neg": 0.0,
+      "neu": 0.0,
+      "pos": 0.0,
+      "compound": 0.0
+    }
+  }
+]
